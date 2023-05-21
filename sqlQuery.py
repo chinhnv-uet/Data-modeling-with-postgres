@@ -36,7 +36,7 @@ DimUser_table_create = ("""CREATE TABLE IF NOT EXISTS  DIM_USER(
 
 DimArtist_table_create = ("""CREATE TABLE  IF NOT EXISTS DIM_ARTIST(
 	artist_id VARCHAR CONSTRAINT artist_pk PRIMARY KEY,
-	name VARCHAR,
+	artist_name VARCHAR,
 	location VARCHAR,
 	latitude DECIMAL,
 	longitude DECIMAL
@@ -64,6 +64,7 @@ DimTime_table_create = ("""CREATE TABLE IF NOT EXISTS DIM_TIME (
     time_id SERIAL CONSTRAINT time_pk PRIMARY KEY,
 	hour INT NOT NULL,
 	minute INT NOT NULL,
+ 	second INT NOT NULL,
     time_full TIME NOT NULL,
     timeBySecond INT NOT NULL
 )""")

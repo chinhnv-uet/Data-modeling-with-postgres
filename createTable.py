@@ -21,7 +21,7 @@ def createTable(conn, cursor):
     print("Create table successfully")
 
 
-if __name__ == "__main__":
+def execute():
     connectInfo = {
         "host": "localhost",
         "port": "5432",

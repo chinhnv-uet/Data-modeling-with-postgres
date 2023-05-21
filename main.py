@@ -1,5 +1,11 @@
-#create table
+import createTable
+import loadDimTable
 
-#load dim
-
-#load fact
+if __name__ == "__main__":
+    #create table
+    createTable.execute()
+    
+    #load dim
+    loadDimTable.execute()
+    
+    #load fact
