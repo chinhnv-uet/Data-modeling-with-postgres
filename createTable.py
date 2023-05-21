@@ -1,7 +1,35 @@
-#TODO: execute create table
 import psycopg2
+from sqlQuery import create_table_queries
+from sqlQuery import drop_table_queries
 
-#b1 establish connect
-#b2 run drop table
-#b3 run create table
-#b4 commit and close connect
+def establishConnection(connectInfo):
+    conn = psycopg2.connect(**connectInfo)
+    cursor = conn.cursor()
+    print("Connect to postgres successfully")
+    return conn, cursor
+
+def dropTable(conn, cursor):
+    for dropTabQuery in drop_table_queries:
+        cursor.execute(dropTabQuery)
+    conn.commit()
+    print("Drop table successfully")
+    
+def createTable(conn, cursor):
+    for createTabQuery in create_table_queries:
+        cursor.execute(createTabQuery)
+    conn.commit()
+    print("Create table successfully")
+
+
+if __name__ == "__main__":
+    connectInfo = {
+        "host": "localhost",
+        "port": "5432",
+        "dbname": "chinhnv",
+        "user": "chinhnv",
+        "password": "123456"
+    }
+    conn, cursor = establishConnection(connectInfo)
+    dropTable(conn, cursor)
+    createTable(conn, cursor)
+    
